@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A To-Do App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl text-center text-indigo-600 mb-6">A To-Do App</h1>
+
+    <div class="mb-4">
+        <a href="{% url 'add_task' %}" class="bg-indigo-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-indigo-700">Add New Task</a>
+    </div>
+
+    <ul class="space-y-4">
+        {% for task in tasks %}
+        <li class="flex justify-between items-center p-4 bg-white rounded-lg shadow-md hover:bg-gray-50">
+            <span class="{% if task.completed %}line-through text-gray-500{% else %}text-black{% endif %}">{{ task.title }}</span>
+            <div class="space-x-4">
+                <a href="{% url 'toggle_task' task_id=task.id %}" class="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600">Complete</a>
+                <a href="{% url 'delete_task' task.id %}" class="bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600">Delete</a>
+            </div>
+        </li>
+        {% empty %}
+        <li class="text-center text-gray-500">No tasks yet!</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

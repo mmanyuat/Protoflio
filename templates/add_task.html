@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task - Flashy To-Do App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl text-center text-indigo-600 mb-6">Add New Task</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-4">
+            <input type="text" name="title" class="w-full p-4 border border-gray-300 rounded-lg" placeholder="Enter task title">
+        </div>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-full w-full hover:bg-indigo-700">Add Task</button>
+    </form>
+</div>
+
+</body>
+</html>
